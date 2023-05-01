@@ -91,6 +91,7 @@ public class Driver {
         mapViewer = new JMapViewer();
     	mapViewer.setTileSource(new OsmTileSource.TransportMap());
     	mapViewer.setOpaque(true);
+    	mapViewer.setVisible(true);
     	frame.getContentPane().add(mapViewer, BorderLayout.CENTER);
     	frame.getContentPane().add(panel, BorderLayout.NORTH);
     	panel.setVisible(true);
@@ -159,9 +160,10 @@ public class Driver {
         });
 
         // Set the map center and zoom level
-        TripPoint center = TripPoint.getTrip().get(TripPoint.getTrip().size()/2);
+        TripPoint center = TripPoint.getMovingTrip().get(TripPoint.getMovingTrip().size()/4);
         Coordinate middlePoint = new Coordinate(center.getLat(),center.getLon());
         mapViewer.setDisplayPosition(middlePoint, 5);
+        panel.revalidate();
         
         
     }
